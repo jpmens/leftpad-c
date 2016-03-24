@@ -22,12 +22,12 @@ int main(void) {
         *(lastCheck + i) = 'a';
     }
 
-    if (do_test(left_pad("foo", 0), "")) {
+    if (do_test(left_pad("foo", 0), "foo")) {
         printf("Test failed: left_pad(\"foo\", 0) != \"\"\n");
         return EXIT_FAILURE;
     }
 
-    if (do_test(left_pad("foo", 2), "fo")) {
+    if (do_test(left_pad("foo", 2), "foo")) {
         printf("Test failed: left_pad(\"foo\", 2) != \"fo\"\n");
         return EXIT_FAILURE;
     }

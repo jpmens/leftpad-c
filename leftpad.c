@@ -21,16 +21,7 @@ char* do_left_pad(char* base_str, const unsigned int new_size, const char pad_ch
 
     if (0 == new_size) {
         return "";
-    } else if (base_str_len > new_size) {
-        // truncate original string
-        padded_str = (char*) calloc(new_size + 1, sizeof(char));
-
-        for (index = 0; index < new_size; ++index) {
-            *(padded_str + index) = *(base_str + index);
-        }
-
-        return padded_str;
-    } else if (base_str_len == new_size) {
+    } else if (base_str_len >= new_size) {
         return strdup(base_str);
     }
 

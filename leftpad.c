@@ -3,21 +3,23 @@
 
 #include "leftpad.h"
 
-char* left_pad(char* base_str, const unsigned int new_size)
+static char *do_left_pad(const char* base_str, size_t new_size, char pad_char);
+
+char* left_pad(const char* base_str, size_t new_size)
 {
     return do_left_pad(base_str, new_size, ' ');
 }
 
-char* left_pad_str(char* base_str, const unsigned int new_size, const char pad_char)
+char* left_pad_str(const char* base_str, size_t new_size, char pad_char)
 {
     return do_left_pad(base_str, new_size, pad_char);
 }
 
 static
-char* do_left_pad(char* base_str, const unsigned int new_size, const char pad_char)
+char* do_left_pad(const char* base_str, size_t new_size, char pad_char)
 {
     char* padded_str;
-    int index, diff, base_str_len = strlen(base_str);
+    size_t index, diff, base_str_len = strlen(base_str);
 
     if (0 == new_size) {
         return "";

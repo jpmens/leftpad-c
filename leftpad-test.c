@@ -4,7 +4,7 @@
 
 #include "leftpad.h"
 
-int do_test(char* a, char* b)
+static int do_test(char* a, char* b)
 {
     return 0 != strcmp(a, b);
 }

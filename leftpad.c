@@ -19,11 +19,9 @@ static
 char* do_left_pad(const char* base_str, size_t new_size, char pad_char)
 {
     char* padded_str;
-    size_t index, diff, base_str_len = strlen(base_str);
+    size_t diff, base_str_len = strlen(base_str);
 
-    if (0 == new_size) {
-        return "";
-    } else if (base_str_len >= new_size) {
+    if (base_str_len >= new_size) {
         return strdup(base_str);
     }
 
@@ -38,14 +36,10 @@ char* do_left_pad(const char* base_str, size_t new_size, char pad_char)
     }
 
     // Add left padding
-    for (index = 0; index < diff; ++index) {
-        *(padded_str + index) = pad_char;
-    }
+    memset(padded_str, pad_char, diff);
 
     // Copy original string
-    for (index = 0; index < base_str_len; ++index) {
-        *(padded_str + diff + index) = *(base_str + index);
-    }
+    strncpy(padded_str+diff, base_str, base_str_len * sizeof(char));
 
     return padded_str;
 }

@@ -4,31 +4,28 @@
 
 #include "leftpad.h"
 
-int do_test(char* a, char *b)
+int do_test(char* a, char* b)
 {
     return 0 != strcmp(a, b);
 }
 
 int main(void) {
     char* lastCheck = (char*) calloc(10001, sizeof(char));
-    int i;
 
     if (NULL == lastCheck) {
         printf("Unable to launch the test. Please free some KB of ram.");
         return EXIT_FAILURE;
     }
 
-    for (i = 0; i < 10000; ++i) {
-        *(lastCheck + i) = 'a';
-    }
+    memset(lastCheck, 'a', 10000);
 
     if (do_test(left_pad("foo", 0), "foo")) {
-        printf("Test failed: left_pad(\"foo\", 0) != \"\"\n");
+        printf("Test failed: left_pad(\"foo\", 0) != \"foo\"\n");
         return EXIT_FAILURE;
     }
 
     if (do_test(left_pad("foo", 2), "foo")) {
-        printf("Test failed: left_pad(\"foo\", 2) != \"fo\"\n");
+        printf("Test failed: left_pad(\"foo\", 2) != \"foo\"\n");
         return EXIT_FAILURE;
     }
 

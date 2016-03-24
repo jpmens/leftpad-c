@@ -22,18 +22,28 @@ int main(void) {
         *(lastCheck + i) = 'a';
     }
 
-    if (do_test(left_pad("foo", 0), "foo")) {
-        printf("Test failed: left_pad(\"foo\", 0) != \"foo\"\n");
+    if (do_test(left_pad("foo", 0), "")) {
+        printf("Test failed: left_pad(\"foo\", 0) != \"\"\n");
         return EXIT_FAILURE;
     }
 
-    if (do_test(left_pad("foo", 3), "   foo")) {
-        printf("Test failed: left_pad(\"foo\", 3) != \"   foo\"\n");
+    if (do_test(left_pad("foo", 2), "fo")) {
+        printf("Test failed: left_pad(\"foo\", 2) != \"fo\"\n");
         return EXIT_FAILURE;
     }
 
-    if (do_test(left_pad_str("foo", 5, 'a'), "aaaaafoo")) {
-        printf("Test failed: left_pad_str(\"foo\", 5, 'a') != \"aaaaafoo\"\n");
+    if (do_test(left_pad("foo", 3), "foo")) {
+        printf("Test failed: left_pad(\"foo\", 3) != \"foo\"\n");
+        return EXIT_FAILURE;
+    }
+
+    if (do_test(left_pad("foo", 5), "  foo")) {
+        printf("Test failed: left_pad(\"foo\", 5) != \"  foo\"\n");
+        return EXIT_FAILURE;
+    }
+
+    if (do_test(left_pad_str("foobar", 10, 'X'), "XXXXfoobar")) {
+        printf("Test failed: left_pad_str(\"foobar\", 10, 'X') != \"XXXXfoobar\"\n");
         return EXIT_FAILURE;
     }
 

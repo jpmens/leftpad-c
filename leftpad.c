@@ -31,7 +31,7 @@ char* do_left_pad(char* base_str, const unsigned int new_size, const char pad_ch
 
         return padded_str;
     } else if (base_str_len == new_size) {
-        return base_str;
+        return strdup(base_str);
     }
 
     // new_size > base_str_len
